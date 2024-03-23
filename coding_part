@@ -1,0 +1,17 @@
+const int moistureSensorPin = A0; // Analog pin for moisture sensor
+const int waterPumpPin = 9; // Digital pin for water pump
+void setup() {
+pinMode(waterPumpPin, OUTPUT); // Set water pump pin as output
+}
+void loop() {
+int moistureLevel = analogRead(moistureSensorPin); // Read moisture level from
+//the sensor. We are using an analog pin so we will use the analogRead() function
+if (moistureLevel > 512)
+{
+digitalWrite(waterPumpPin, LOW); // triggering the relay to activate water pump
+}
+else // when the moisture is greater than threshold
+{
+digitalWrite(waterPumpPin,HIGH); // relay not triggered so water pump off
+}
+delay(1000);
